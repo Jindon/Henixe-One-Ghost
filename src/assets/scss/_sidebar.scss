@@ -1,0 +1,106 @@
+@import 'variables';
+.hx-search-sidebar{
+      
+      [data-toggle="sidebar"] {
+        display: block;
+      }
+      
+      /* sidebar settings */
+      
+      .sidebar {
+        background: rgba(#f3f3f3, 0.97%);
+        position: fixed;
+        display: block;
+        top: 0;
+        bottom: 0;
+        z-index: 1000;
+        min-height: 100%;
+        max-height: none;
+        overflow: auto;
+        .btn:hover{
+            cursor: pointer;
+        }
+        .search-result-title{
+            padding: 0.5rem 0rem;
+            margin-top: 0.5rem;
+            border-bottom: 1px solid #ccc;
+            font-size: 1.2rem;
+            a{
+                text-decoration: none;
+                color: #666;
+                transition: all 0.3s ease;
+            }
+            a:hover{
+                color: #333;
+            }
+        }
+
+        ul{
+          list-style-type: none;
+          padding:0;
+        }
+
+        border-left: 1px solid $themecolor;
+      }
+      
+      .sidebar-right {
+        right: 0;
+      }
+
+      
+      /* css to override hiding the sidebar according to different screen sizes */
+      
+      .row .sidebar {
+        &.sidebar-right.sidebar-xs-show {
+          right: 0;
+          transform: translate(0, 0);
+        }
+      }
+      
+
+      
+      @media (min-width: 768px) {
+        .row .sidebar {
+          &.sidebar-right.sidebar-sm-show {
+            right: 0;
+            transform: translate(0, 0);
+          }
+        }
+        /*right sidebar is untested */
+      }
+      
+      @media (min-width: 992px) {
+        .row .sidebar {
+          &.sidebar-right.sidebar-md-show {
+            right: 0;
+            transform: translate(0, 0);
+          }
+        }
+      }
+      
+      @media (min-width: 1170px) {
+        .row .sidebar {
+          &.sidebar-right.sidebar-lg-show {
+            right: 0;
+            transform: translate(0, 0);
+          }
+        }
+      }
+      
+      /* animation class - optional: without it the sidebar would just pop in and out*/
+      
+      .sidebar-animate {
+        transition: transform 300ms ease;
+      }
+      
+      /* Left panel positioning classes */
+      
+      .sidebar {
+        &.sidebar-right {
+          transform: translate(100%, 0);
+          &.sidebar-open {
+            transform: translate(0, 0);
+          }
+        }
+      }
+}

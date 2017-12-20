@@ -1,0 +1,144 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    {{!-- Document Settings --}}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#000">
+    {{!-- Base Meta --}}
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{meta_title}}{{#is "home"}} | Home{{/is}}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Lato:400,400i" rel="stylesheet">
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" href="{{asset "css/styles.min.css"}}" />
+    <link rel="stylesheet" href="{{asset "css/code.min.css"}}" />
+    {{!-- endbuild --}}
+
+    {{!-- This tag outputs SEO meta+structured data and other important settings --}}
+    {{ghost_head}}
+
+</head>
+
+<body class="{{body_class}}">
+
+    <div class="hx-wrapper">
+    {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+    {{{body}}}
+
+    </div>
+
+    {{!-- Footer --}}
+    <div class="container">
+        <footer class="mt-5">
+            <ul class="nav footer-nav">
+                {{navigation}}
+            </ul>
+            <div class="copyright text-center my-3">
+                <p>Copyright {{date format="YYYY"}} &copy; <a href="{{@blog.url}}">{{@blog.title}}</a></p>
+            </div>
+        </footer>
+    </div>
+    {{!-- Back to top --}}
+    <a id="back-to-top" href="#" class="btn btn-secondary btn-sm back-to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+    {{!-- email subscribe modal content --}}
+    {{#if @labs.subscribers}}
+    <div class="modal fade hx-sub-modal" id="subModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                    </button>
+                    <!-- Subscribe section -->
+                    <div class="subscription-modal mt-2">
+                        <div class="jumbotron text-center bg-transparent">
+                            {{^if success}}
+                            <div class="row sub-page-heading mb-2">
+                                <div class="col-12">
+                                    <h5>Subscribe to {{@blog.title}}</h5>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-10">
+                                        {{subscribe_form
+                                            form_class="form-group"
+                                            input_class="form-control"
+                                            button_class="btn btn-secondary btn-dark btn-block"
+                                            placeholder="Your email address"
+                                            autofocus="true"
+                                        }}
+                                    </div>
+                                </div>
+                            </div>
+                            {{else}}
+                            <div class="row sub-page-heading mb-2">
+                                <div class="col-12">
+                                    <h5>Subscribed!</h5>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-10">
+                                        <p>
+                                            You've successfully subscribed to <em>{{@blog.title}}</em>
+                                            with the email address <em>{{email}}</em>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script src="{{asset "js/scripts.min.js"}}"></script>
+
+
+    <script type="text/javascript">
+        NProgress.configure({ easing: 'ease', speed: 800 });
+        NProgress.configure({ showSpinner: false });
+        NProgress.start();
+        NProgress.done();
+
+        var options = {
+        valueNames: [ 'title-name' ]
+        };
+
+        var userList = new List('search-list', options);
+        function showSearch() {
+            var d = document.getElementById("s-result");
+            d.classList.remove("d-none");
+        }
+    </script>
+
+    {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
+    {{{block "scripts"}}}
+
+    {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
+    {{ghost_foot}}
+
+</body>
+</html>

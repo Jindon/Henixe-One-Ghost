@@ -1,0 +1,35 @@
+{{!< default}}
+
+{{> "header"}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container">
+    <div class="hx-page-header jumbotron bg-transparent text-center mt-4">
+        <div class="container">
+            <h1 class="display-5 hx-page-title"><span class="hx-custom-color">{{title}}</span></h1>
+            <small class="lead">
+                {{#if description}}
+                    {{description}}
+                {{/if}}
+            </small>
+        </div>
+    </div>
+
+    {{#if feature_image}}
+    <div class="hx-page-image">
+        <img src="{{feature_image}}" alt="{{title}}" class="img-fluid">
+    </div>
+    {{/if}}
+</div>
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center mt-4 mb-2">
+        <div class="{{post_class}} hx-post-content col-12">
+            {{content}}
+        </div>
+    </div>
+</div>
+
+{{/post}}

@@ -1,0 +1,125 @@
+{{!< default}}
+
+{{> "header"}}
+
+
+{{!-- The main content area --}}
+{{^is "paged"}}
+<div class="container">
+    <div class="row mt-4">
+    {{#get "posts" include="tags,author" limit="1"}}
+        
+        <div class="col-md-8 hx-featured-card">
+            {{#foreach posts}}
+            <div class="card mb-3">
+                {{#if feature_image}}
+                <div class="card-img">
+                    <a href="{{url}}">
+                        <img class="card-img-top" src="{{feature_image}}" alt="{{title}}">
+                    </a>
+                </div>
+                {{else}}
+                <div class="card-img">
+                    <a href="{{url}}">
+                        <img class="card-img-top" src="{{asset "images/placeholder.jpeg"}}" alt="{{title}}">
+                    </a>
+                </div>
+                {{/if}}
+                <div class="card-body">
+                    <p class="card-text text-muted card-date">
+                        <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                    </p>
+                    <a href="{{url}}">             
+                        <h4 class="card-title">{{title}}</h4>
+                    </a>
+                    <p class="card-text">{{excerpt words="18"}}</p>
+                        <p class="d-md-none text-muted card-tag">
+                            {{#foreach tags limit="1"}}
+                            <a href="{{url}}">#{{name}}</a>
+                            {{/foreach}}
+                        </p>
+                    <div class="card-footer bg-transparent">
+                        <small class="text-muted pull-left hx-author-name">{{author}}</small>
+                        <small class="d-none d-md-block text-muted card-tag pull-right">
+                            {{#foreach tags limit="3"}}
+                            <a href="{{url}}">#{{name}}</a>
+                            {{/foreach}}
+                        </small>
+                    </div>
+                </div>
+            </div>
+            {{/foreach}}
+        </div>
+    {{/get}}
+        <div class="col-md-4 hx-small-card">
+        {{#get "posts" include="tags,author" limit="3"}}
+            {{#foreach posts}}
+            {{#has number="1"}}
+            {{else}}
+
+                <div class="card mb-3">
+                    {{#if feature_image}}
+                    <div class="card-img">
+                        <a href="{{url}}">
+                            <img class="card-img-top" src="{{feature_image}}" alt="{{title}}">
+                        </a>
+                    </div>
+                    {{else}}
+                    <div class="card-img">
+                        <a href="{{url}}">
+                            <img class="card-img-top" src="{{asset "images/placeholder.jpeg"}}" alt="{{title}}">
+                        </a>
+                    </div>
+                    {{/if}}
+                    <div class="card-body">
+                        <a href="{{url}}">
+                            <h4 class="card-title">{{title}}</h4>
+                        </a>
+                        <p class="text-muted card-tag">
+                        {{#foreach tags limit="1"}}
+                        <a href="{{url}}">#{{name}}</a>
+                        {{/foreach}}
+                        </p>
+                        <div class="card-footer bg-transparent author-name">
+                            <small class="text-muted">{{author}}</small>
+                        </div>
+                    </div>
+                </div>
+
+            {{/has}}
+            {{/foreach}}
+        {{/get}}
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row sub-page-heading mt-4">
+        <div class="col-12">
+            <h5 class="pull-left">Recent Posts</h5>
+        </div>
+    </div>
+</div>
+{{/is}}
+
+
+<div class="container">
+    <div class="row {{#is "paged"}} mt-4{{/is}}">
+        {{#foreach posts}}
+        {{^is "paged"}}
+            {{#has number="1,2,3"}}
+            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+            {{else}}
+            {{> "post-card"}}
+            {{/has}}
+        {{else}}
+            {{> "post-card"}}
+        {{/is}}
+        {{/foreach}}
+
+    </div>
+</div>
+
+
+{{pagination}}

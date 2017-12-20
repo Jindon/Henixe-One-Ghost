@@ -1,0 +1,27 @@
+
+<div class="container">
+    <div class="row justify-content-center mt-4 pagination-section">
+        
+        <div class="col text-left">
+            {{#if prev}}
+            <a href="{{page_url prev}}" class="btn btn-outline-secondary btn-sm">
+                Previous
+            </a>
+            {{/if}}
+        </div>
+
+        <div class="col text-center">
+            <p class="text-muted">Page {{page}} of {{pages}}</p>
+        </div>
+
+        <div class="col text-right">
+            {{#if next}}
+            <a href="{{page_url next}}" class="btn btn-outline-secondary btn-sm">
+                Next
+            </a>
+            {{/if}}
+        </div>
+
+
+    </div>
+</div>

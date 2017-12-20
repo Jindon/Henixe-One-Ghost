@@ -1,0 +1,71 @@
+@import 'variables';
+
+.hx-social-share{
+    li.nav-item{
+        background: #fff;
+        margin-right: .5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.3rem;
+        a.nav-link{
+            padding: 0.3rem 0.8rem;
+            min-width: 3rem;
+        }
+        margin-bottom: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    li.s-facebook:hover{
+        background: $facebook;
+        a.nav-link{
+            color: #f3f3f3;
+            min-width: 5rem;
+        }
+    }
+
+    li.s-twitter:hover{
+        background: $twitter;
+        a.nav-link{
+            color: #f3f3f3;
+            min-width: 5rem;
+        }
+    }
+    li.s-google:hover{
+        background: $google;
+        a.nav-link{
+            color: #f3f3f3;
+            min-width: 5rem;
+        }
+    }
+    li.s-linkedin:hover{
+        background: $linkedin;
+        a.nav-link{
+            color: #f3f3f3;
+            min-width: 5rem;
+        }
+    }
+    li.s-email:hover{
+        background: $themecolor;
+        a.nav-link{
+            color: #f3f3f3;
+            min-width: 5rem;
+        }
+    }
+}
+
+.social-author{
+    li.nav-item{
+        a.nav-link{
+            padding: 0.3rem 0.3rem;
+            min-width: 3rem;
+        }
+        transition: all 0.5s ease;
+    }
+    li.nav-item:hover{
+        background: #333;
+        a.nav-link{
+            color: #f3f3f3;
+            min-width: 4rem;
+        }
+        border-radius: 0.3rem;
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "name": "henixe-one-ghost",
+    "description": "A minimal responsive Ghost Theme",
+    "demo": "https://one.henixethemes.com",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=1.2.0"
+    },
+    "license": "MIT",
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg",
+        "mobile": "assets/screenshot-mobile.jpg"
+    },
+    "author": {
+        "name": "Henixe Themes",
+        "email": "jindon27@gmail.com",
+        "url": "https://www.henixethemes.com"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine",
+            "Blog"
+        ]
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "minimal",
+        "clean",
+        "blog"
+    ],
+    "config": {
+        "posts_per_page": 9
+    }
+}

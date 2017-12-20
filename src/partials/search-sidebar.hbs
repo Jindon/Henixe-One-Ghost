@@ -1,0 +1,25 @@
+{{!-- Search Sidebar --}}
+<div class="hx-search-sidebar">
+    <div class="col-sm-8 col-md-6 sidebar sidebar-right sidebar-animate">
+        <div class="close-button mt-3">
+            <a href="#" data-toggle="sidebar" data-target=".sidebar-right"><i class="fa fa-times-circle fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div id="search-list" class="search-bar col-12 mt-3">
+
+            <input type="text" class="search form-control" placeholder="Search posts.." aria-label="Search posts.." onkeyup="showSearch()">
+
+
+            {{#get "posts"}}
+            <ul id="s-result" class="list search-results mt-4 d-none">
+                {{#foreach posts}}
+                <li>
+                <h4 class="title-name search-result-title">
+                    <a href="{{url}}">{{title}}</a>
+                </h4>
+                </li>
+                {{/foreach}}
+            </ul>
+            {{/get}}
+        </div>
+    </div>
+</div>

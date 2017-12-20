@@ -1,0 +1,23 @@
+{{!-- Comment --}}
+
+<div class="container mb-5">
+    <div class="row sub-page-heading mt-5">
+        <div class="col-12">
+            <h5 class="pull-left">Comment below</h5>
+        </div>
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = '{{url absolute="true"}}';
+            this.page.identifier = 'ghost-{{comment_id}}';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            // IMPORTANT: Replace henixe-themes with your disqus shortname!
+            s.src = 'https://henixe-themes.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+</div>

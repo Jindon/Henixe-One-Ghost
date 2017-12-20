@@ -1,0 +1,54 @@
+{{!< default}}
+{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
+{{> "header"}}
+
+{{#author}}
+    <div class="container hx-author-page-meta">
+        <div class="jumbotron bg-transparent text-center">
+            {{#if profile_image}}
+            <img src="{{profile_image}}" alt="{{name}}" class="rounded-circle hx-author-avatar" width=150>
+            {{/if}}
+            <h5 class="display-5 mt-2">{{name}}</h5>
+            {{#if bio}}
+            <p class="hx-author-meta">{{bio}}</p>
+            {{/if}}
+            {{#if website}}
+            <p class="hx-author-meta">Website: <a href="{{website}}" target="_blank">{{website}}</a></p>
+            {{/if}}
+            {{!-- Author Social Options --}}
+            <div class="hx-social-author">
+                <ul class="nav justify-content-center">
+                    {{#if facebook}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{facebook_url}}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    {{/if}}
+                    {{#if twitter}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{twitter_url}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </div>
+{{/author}}
+
+<div class="container">
+    <div class="row sub-page-heading mt-4 mb-2">
+        <div class="col-12">
+            <h5 class="pull-left">Posts From Author:</h5>
+        </div>
+    </div>
+</div>
+
+{{!-- The main content area --}}
+<div class="container">
+    <div class="row">
+        {{#foreach posts}}
+        {{> "post-card"}}
+        {{/foreach}}
+    </div>
+</div>
+
+{{pagination}}

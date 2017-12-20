@@ -1,0 +1,17 @@
+@import 'variables';
+
+.fa-times-circle{
+    color: $hred
+}
+.fa-times-circle:hover{
+    cursor: pointer;
+}
+
+.modal{
+    .modal-content{
+        background: #e9ecef;
+    }
+    button{
+        cursor: pointer;
+    }
+}

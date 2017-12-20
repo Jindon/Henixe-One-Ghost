@@ -1,0 +1,39 @@
+
+<div class="hx-post-card col-md-4 col-sm-12 col-lg-4 hx-small-card">
+    <div class="card mb-3">
+        {{#if feature_image}}
+        <div class="card-img">
+            <a href="{{url}}">
+                <img class="card-img-top" src="{{feature_image}}" alt="{{title}}">
+            </a>
+        </div>
+        {{else}}
+        <div class="card-img">
+            <a href="{{url}}">
+                <img class="card-img-top" src="{{asset "images/placeholder.jpeg"}}" alt="{{title}}">
+            </a>
+        </div>
+        {{/if}}
+
+        <div class="card-body">
+            <p class="card-text text-muted card-date">
+                <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+            </p>
+            <a href="{{url}}">             
+                <h4 class="card-title">{{title}}</h4>
+            </a>
+            <p class="card-text">{{excerpt words="8"}}</p>
+                <p class="text-muted card-tag">
+                {{#foreach tags limit="3"}}
+                <a href="{{url}}">#{{name}}</a>
+                {{/foreach}}
+                </p>
+            <div class="card-footer bg-transparent author-name">
+                <small class="text-muted">{{author}}</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

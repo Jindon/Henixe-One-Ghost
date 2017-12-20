@@ -1,0 +1,82 @@
+{{!-- navigation --}}
+<div class="bg-white navigation mb-3">
+    {{!-- top navbar --}}
+    <nav class="navbar navbar-expand navbar-light hx-navigation-top">
+        <div class="container">
+            {{#if @blog.logo}}
+            <a class="navbar-brand" href="{{@blog.url}}">
+                <img src="{{@blog.logo}}" class="d-inline-block align-top" alt="{{@blog.title}}">
+            </a>
+            {{else}}
+            <a class="navbar-brand" href="{{@blog.url}}">
+                <span class="hx-logo-text">{{@blog.title}}</span>
+            </a>
+            {{/if}}
+            <ul class="navbar-nav hx-top-widget ml-auto">
+                <li class="nav-item hx-search-top">
+                    <a class="nav-link search-link" href="#" data-toggle="sidebar" data-target=".sidebar-right"><i class="fa fa-search" aria-hidden="true"></i></a>
+                </li>
+                {{#if @labs.subscribers}}
+                <li class="nav-item">
+                <a class="nav-link subscribe-link" href="#" data-toggle="modal" data-target="#subModal"><small class="subscribe-text">Subscribe</small></a>
+                </li>
+                {{/if}}
+                {{#if @blog.facebook}}
+                <li class="nav-item">
+                <a class="nav-link" href="{{facebook_url @blog.facebook}}" target="_blank">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                </li>
+                {{/if}}
+                {{#if @blog.twitter}}
+                <li class="nav-item">
+                <a class="nav-link" href="{{twitter_url @blog.twitter}}" target="_blank">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+    {{!--  Below Navbar --}}
+    <nav class="navbar navbar-expand-sm navbar-light hx-navigation-bottom" data-toggle="sticky-onscroll">
+        <div class="container justify-content-center">
+            <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span> </span>
+            <span> </span>
+            <span> </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                {{#if @blog.navigation}}
+                <ul class="navbar-nav">
+                    {{navigation}}
+                    <li class="nav-item hx-search-buttom">
+                        <a class="nav-link" href="#" data-toggle="sidebar" data-target=".sidebar-right"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+                {{/if}}
+                {{!--  Author Social  --}}
+                <div class= "header-social">
+                    <ul class="nav justify-content-center">
+                    {{#if @blog.facebook}}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{facebook_url @blog.facebook}}" target="_blank">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    </li>
+                    {{/if}}
+                    {{#if @blog.twitter}}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{twitter_url @blog.twitter}}" target="_blank">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    </li>
+                    {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+{{> "search-sidebar"}}

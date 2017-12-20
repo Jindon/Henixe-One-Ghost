@@ -1,0 +1,35 @@
+{{!< default}}
+
+{{> "header"}}
+
+
+    <div class="container">
+        <div class="jumbotron text-center hx-error-content">
+            <div class="container">
+                <h1 class="display-5">Error {{code}}</h1>
+                <p class="lead">{{message}}</p>
+                <img src="{{asset "images/404.gif"}}" class="img-fluid mt-3 mb-5" alt="Responsive image">
+                <p class="lead">
+                    <a class="btn btn-secondary btn-dark btn-sm" href="{{@blog.url}}" role="button">Back Home</a>
+                </p>
+            </div>
+        </div>
+
+        {{#if errorDetails}}
+        <section class="error-stack mt-4">
+            <h3>Theme errors</h3>
+            <ul class="error-stack-list">
+                {{#each errorDetails}}
+                    <li>
+                        <em class="error-stack-function">{{{rule}}}</em>
+
+                        {{#each failures}}
+                            <p><span class="error-stack-file">Ref: {{ref}}</span></p>
+                            <p><span class="error-stack-file">Message: {{message}}</span></p>
+                        {{/each}}
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+    </div>
